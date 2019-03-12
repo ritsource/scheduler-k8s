@@ -3,7 +3,7 @@ services:
   - docker
 env:
   global:
-    - SCHEDULER_TAG=90efe53a7888a3906851ba430e6c0eb60e8a8923
+    - SCHEDULER_TAG=8218582457cc2b964d00828bbf703cce98745ea3
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
 before_install:
