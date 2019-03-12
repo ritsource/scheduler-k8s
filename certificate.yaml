@@ -1,0 +1,18 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: scheduler-ritwiksaha-com-tls
+spec:
+  secretName: scheduler-ritwiksaha-com
+  issuerRef: 
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: scheduler.ritwiksaha.com
+  dnsNames:
+    - scheduler.ritwiksaha.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - scheduler.ritwiksaha.com
