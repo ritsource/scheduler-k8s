@@ -18,6 +18,12 @@ spec:
           ports:
             - containerPort: 5000
           env:
+            - name: AUTH_REDIRECT_URL_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: auth-redirect-url-base
+                  key: AUTH_REDIRECT_URL_BASE
+
             - name: MONGO_URI
               value: mongodb://mongo-cluster-ip-service:27017/scheduler
 
@@ -72,5 +78,5 @@ spec:
             - name: COOKIE_KEY
               valueFrom:
                 secretKeyRef:
-                  name: facebook-app-secret
+                  name: cookie-key
                   key: COOKIE_KEY

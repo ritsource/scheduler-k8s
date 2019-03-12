@@ -17,3 +17,6 @@ spec:
           image: ritwik310/scheduler-client
           ports:
             - containerPort: 3000
+          env:
+            - name: SERVER_URI
+              value: server-cluster-ip-service
