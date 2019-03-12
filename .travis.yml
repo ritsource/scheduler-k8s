@@ -1,8 +1,6 @@
 sudo: required
-
 services:
   - docker
-
 env:
   global:
     - SCHEDULER_TAG=90efe53a7888a3906851ba430e6c0eb60e8a8923
