@@ -1,14 +1,28 @@
 sudo: required
 
+services:
+  - docker
+
 env:
   global:
+    - SCHEDULER_TAG=90efe53a7888a3906851ba430e6c0eb60e8a8923
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
 before_install:
+  - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
   - curl https://sdk.cloud.google.com | bash > /dev/null;
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
+  - gcloud config set project scheduler-234202
+  - gcloud config set compute/zone asia-south1-a
+  - gcloud container clusters get-credentials my-website-1-cluster
 
 script:
   - echo "Skipping Test :)"
+
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
