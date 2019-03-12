@@ -1,3 +1,5 @@
+kubectl apply -f certificate.yaml
+kubectl apply -f issuer.yaml
 kubectl apply -f ingress-service.yaml
 kubectl apply -f scheduler/
 
